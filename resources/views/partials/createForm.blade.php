@@ -3,7 +3,7 @@
         <h1 class="text-center text-white">
             Inserisci il Fumetto
         </h1>
-        <form action="{{route('project.store')}}" method="POST">
+        <form action="{{route('projects.store')}}" method="POST">
             @method('POST')
             @csrf
 

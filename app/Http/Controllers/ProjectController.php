@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\StoreProjectRequest;
 use App\Models\Admin\Project;
 use Illuminate\Http\Request;
 
@@ -34,9 +36,14 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        $form_data = $request->validated();
+
+        $new_project = new Project($form_data);
+        $new_project->save();
+        
+        return redirect()->route('projects.index');
     }
 
     /**

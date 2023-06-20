@@ -1,7 +1,7 @@
 <div>
     <div class="container-form container m-auto p-5">
         <h1 class="text-center text-white">
-            Inserisci il Fumetto
+            Crea un nuovo progetto
         </h1>
         <form action="{{route('projects.store')}}" method="POST">
             @method('POST')

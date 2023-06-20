@@ -7,7 +7,7 @@ Portfolio Leonardo Rinaldi | Progetti
     <div class="row">
         @forelse ($projects as $project)
         <div class="card col-4 text-center p-5">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="{{route('projects.show', [$project])}}" class="text-decoration-none text-dark">
                 <h3>{{$project['name']}}
                 </h3>
                 <img src="{{$project['image']}}" style="width: 100%" alt="">

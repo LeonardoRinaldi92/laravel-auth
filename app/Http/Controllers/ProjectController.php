@@ -87,7 +87,7 @@ class ProjectController extends Controller
     {
         $form_data = $request->validated();
         $project->update($form_data);
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('projects.show', $project)->with('success', "hai modificato l'elemento".$project['name']);
     }
 
     /**

@@ -3,6 +3,13 @@
 Portfolio Leonardo Rinaldi | Progetti 
 @endsection
 @section('content')
+@if (Session::has('success'))
+<div class="container">
+    <div class="alert alert-success text-center">
+        {{Session::get('success')}}
+    </div>
+</div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="card col-8 text-center p-5">

@@ -12,7 +12,7 @@ Portfolio Leonardo Rinaldi | Modifica/Elimina Progetti
                     <th scope="col">NAME</th>
                     <th scope="col">DESC</th>
                     <th scope="col" class="text-center">MODIFICA</th>
-                    <th scope="col" class="text-center">NASCONDI/MOSTRA</th>
+                    <th scope="col" class="text-center">VISIBILITA'</th>
                     <th scope="col" class="text-center">ELIMINA</th>
                 </tr>
             </thead>
@@ -23,7 +23,7 @@ Portfolio Leonardo Rinaldi | Modifica/Elimina Progetti
                     <td><b>{{$project['name']}}</b></td>
                     <td><i>"{{$project['short_description']}}"</i></td>
                     <td class="text-center "><a href="" class="text-black"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td class="text-center text"><a href="" class="text-black"><i class="fa-solid fa-eye-slash"></i></a></td>
+                    <td class="text-center text"><a href="" class="text-black"><i class="fa-solid fa-eye"></i></a></td>
                     <td class="text-center text"><a href="" class="text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
                 </tr>
                 @empty

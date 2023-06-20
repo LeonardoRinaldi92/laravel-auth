@@ -23,7 +23,7 @@ class ProjectController extends Controller
     public function indexForEdit()
     {
         $projects = Project::all();
-        return view('pages.projects.indexForEdit', compact('projects'));
+        return view('pages.admin.projects.indexForEdit', compact('projects'));
     }
 
     /**
@@ -33,7 +33,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('pages.projects.create');
+        return view('pages.admin.projects.create');
     }
 
     /**
@@ -71,7 +71,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('pages.admin.projects.edit',compact('project'));
     }
 
     /**

@@ -83,7 +83,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $form_data = $request->all();
+        $project->update($form_data);
+        return redirect()->route('projects.show', $project);
     }
 
     /**

@@ -3,7 +3,7 @@
         <h1 class="text-center text-white">
             Modifica proggetto
         </h1>
-        <form action="{{route('projects.store')}}" method="POST">
+        <form action="{{route('admin.projects.update', $project)}}" method="POST">
             
             @csrf
             @method('PUT')
@@ -61,7 +61,7 @@
                     <span style="color: red; text-transform: uppercase">{{$message}}</span>
                 @enderror
             </div>
-            <button type="submit" class="my-3 btn btn-primary">Aggiungi progetto </button>
+            <button type="submit" class="my-3 btn btn-primary">Modifica Proggetto </button>
         </form>
     </div>
 </div>

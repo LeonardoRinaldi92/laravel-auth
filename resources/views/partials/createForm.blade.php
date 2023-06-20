@@ -3,7 +3,7 @@
         <h1 class="text-center text-white">
             Crea un nuovo progetto
         </h1>
-        <form action="{{route('projects.store')}}" method="POST">
+        <form action="{{route('admin.projects.store')}}" method="POST">
             @method('POST')
             @csrf
 

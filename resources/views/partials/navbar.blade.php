@@ -13,7 +13,7 @@
             </li>
             @auth
             <li class="nav-item">
-                <a class="nav-link bbb" href="{{route('projects.create')}}">Aggiungi un progetto</a>
+                <a class="nav-link bbb" href="{{route('admin.projects.create')}}">Aggiungi un progetto</a>
             </li>
             @endauth
         </ul>
@@ -35,7 +35,7 @@
                     {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="drop-nav">
-                    <a class="dropdown-item" href="{{route('projects.indexForEdit')}}">{{__('Dashboard')}}</a>
+                    <a class="dropdown-item" href="{{route('admin.projects.indexForEdit')}}">{{__('Dashboard')}}</a>
                     <a class="dropdown-item" href="{{ url('admin/profile') }}">{{__('Profile')}}</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

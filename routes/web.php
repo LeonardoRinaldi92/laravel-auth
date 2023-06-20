@@ -21,18 +21,19 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('admin.profile.edit');
+    Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
+    Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('admin.profile.destroy');
 });
 
 
 
-Route::group(['prefix'=>'admin/projects','as'=>'projects.'], function(){
-    Route::get('/create', [ProjectController::class, 'create'])->middleware('auth')->name('create');
-    Route::get('/indexForEdit', [ProjectController::class, 'indexForEdit'])->middleware('auth')->name('indexForEdit');
-    Route::post('/store',[ProjectController::class, 'store'])->middleware('auth')->name(('store'));
-    Route::get('/{project}/edit', [ProjectController::class, 'edit'])->middleware('auth')->name('edit');
+Route::group(['prefix'=>'admin/projects','as'=>'admin.projects.','middleware'=>'auth'], function(){
+    Route::get('/create', [ProjectController::class, 'create'])->name('create');
+    Route::get('/indexForEdit', [ProjectController::class, 'indexForEdit'])->name('indexForEdit');
+    Route::post('/store',[ProjectController::class, 'store'])->name(('store'));
+    Route::get('/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
+    Route::put('/{project}/update', [ProjectController::class, 'update'])->name('update');
 });
 
 Route::group(['prefix'=>'projects','as'=>'projects.'], function(){

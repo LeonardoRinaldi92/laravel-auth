@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::group(['prefix'=>'projects','as'=>'projects.'], function(){
     Route::get('/', [ProjectController::class, 'index'])->name('index');
     Route::get('/create', [ProjectController::class, 'create'])->middleware('auth')->name('create');
+    Route::get('/indexForEdit', [ProjectController::class, 'indexForEdit'])->middleware('auth')->name('indexForEdit');
     Route::post('/store',[ProjectController::class, 'store'])->name(('store'));
     Route::get('/{project}', [ProjectController::class, 'show'])->name('show');
 });

@@ -20,6 +20,12 @@ class ProjectController extends Controller
         return view('pages.projects.index', compact('projects'));
     }
 
+    public function indexForEdit()
+    {
+        $projects = Project::all();
+        return view('pages.projects.indexForEdit', compact('projects'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

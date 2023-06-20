@@ -35,7 +35,5 @@ Portfolio Leonardo Rinaldi | Modifica/Elimina Progetti
             </tbody>
         </table>
     </div>
-    
-    </div>
 </div>
 @endsection

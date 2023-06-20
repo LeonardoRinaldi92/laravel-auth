@@ -35,7 +35,7 @@
                     {{ Auth::user()->name }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="drop-nav">
-                    <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
+                    <a class="dropdown-item" href="{{route('projects.indexForEdit')}}">{{__('Dashboard')}}</a>
                     <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">

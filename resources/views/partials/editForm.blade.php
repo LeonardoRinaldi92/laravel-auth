@@ -61,6 +61,13 @@
                     <span style="color: red; text-transform: uppercase">{{$message}}</span>
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="project-visibility" class="form-label text-white-50">visibilità</label>
+                <div>
+                    <input type="radio" name="visibility" value="0"><span class="text-white-50">privato</span>
+                    <input type="radio" name="visibility" value="1"> <span class="text-white-50">publico</span>
+                </div>
+            </div>
             <button type="submit" class="my-3 btn btn-primary">Modifica Proggetto </button>
         </form>
     </div>

@@ -30,6 +30,8 @@ class UpdateProjectRequest extends FormRequest
             'image' => ['required', 'string', 'max:255'],
             'relase_date' => ['required', 'date'],
             'type' => ['required', 'string', 'max:255'],
+            'slug'=> ['string'],
+            'visibility'=>['boolean'],
         ];
     }
 
@@ -42,6 +44,7 @@ class UpdateProjectRequest extends FormRequest
         'image' => 'la foto del progetto',
         'relase_date' => 'la data di creazione del progetto',
         'type' => 'i programmi usati per il progetto',
+        'visbility' => 'la visibiltà del progetto'
        ];
    }
 }

@@ -48,9 +48,6 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-
-            
-        
         $slug = Str::slug($request->name);
         
         $form_data = $request->validated();
@@ -97,8 +94,14 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $slug = Str::slug($request->name);
+
         $form_data = $request->validated();
+
+        $form_data['slug'] = $slug;
+
         $project->update($form_data);
+        
         return redirect()->route('projects.show', $project->slug)->with('success', "hai modificato l'elemento".$project['name']);
     }
 

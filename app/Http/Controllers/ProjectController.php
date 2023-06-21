@@ -69,8 +69,10 @@ class ProjectController extends Controller
      * @param  \App\Models\Admin\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($slug)
+
     {
+        $project = project::where('slug', $slug)->firstOrFail();
         return view('pages.projects.show', compact('project'));
     }
 
@@ -80,8 +82,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Admin\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($slug)
     {
+        $project = project::where('slug', $slug)->firstOrFail();
         return view('pages.admin.projects.edit',compact('project'));
     }
 
@@ -96,7 +99,7 @@ class ProjectController extends Controller
     {
         $form_data = $request->validated();
         $project->update($form_data);
-        return redirect()->route('projects.show', $project)->with('success', "hai modificato l'elemento".$project['name']);
+        return redirect()->route('projects.show', $project->slug)->with('success', "hai modificato l'elemento".$project['name']);
     }
 
     /**

@@ -20,7 +20,7 @@ Portfolio Leonardo Rinaldi | Modifica/Elimina Progetti
                 <tr class="">
                     <td><b>{{$project['name']}}</b></td>
                     <td><i>"{{$project['short_description']}}"</i></td>
-                    <td class="text-center "><a href="{{route('admin.projects.edit', [$project])}}" class="text-black"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                    <td class="text-center "><a href="{{route('admin.projects.edit', $project->slug)}}" class="text-black"><i class="fa-solid fa-pen-to-square"></i></a></td>
                     <td class="text-center text"><a href="" class="text-black"><i class="fa-solid fa-eye"></i></a></td>
                     <td class="text-center text">
                         <form action="{{route ('admin.projects.destroy', $project)}}" method="POST" id="delete-form">

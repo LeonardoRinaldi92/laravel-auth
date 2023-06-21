@@ -27,7 +27,7 @@ class UpdateProjectRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'short_description' => ['required', 'string', 'max:255'],
-            'image' => ['required', 'image', 'max:3000'],
+            'image' => ['required', 'image'],
             'relase_date' => ['required', 'date'],
             'type' => ['required', 'string', 'max:255'],
             'slug'=> ['string'],
@@ -37,7 +37,7 @@ class UpdateProjectRequest extends FormRequest
 
     public function attributes(): array
    {
-       return [
+    return [
         'name' => 'il nome del progetto',
         'description' => 'la descrizione del progetto',
         'short_description' => 'la descrizione BREVE del progetto',
@@ -45,6 +45,7 @@ class UpdateProjectRequest extends FormRequest
         'relase_date' => 'la data di creazione del progetto',
         'type' => 'i programmi usati per il progetto',
         'visbility' => 'la visibiltà del progetto'
+
        ];
    }
 }

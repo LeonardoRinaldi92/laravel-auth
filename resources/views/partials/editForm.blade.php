@@ -3,7 +3,7 @@
         <h1 class="text-center text-white">
             Modifica proggetto
         </h1>
-        <form action="{{route('admin.projects.update', $project)}}" method="POST">
+        <form action="{{route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
             
             @csrf
             @method('PUT')
@@ -35,10 +35,9 @@
                 @enderror
             </div>
 
-            <div class="form-group">
-                <label for="project-image" class="form-label">Immagine del progetto</label>
-                <input type="text" required max="255"  id="project-image" class="form-control"
-                placeholder="Inserisci l'immagine" name="image" value="{{ old('image') ?? $project->image}}">
+            <div class="mb-3 form-group">
+                <label for="project-image" class="form-label">Scegli una immagine</label>
+                <input type="file" class="form-control" name="image" id="project-image" placeholder="project-image" aria-describedby="fileHelpId">
                 @error('image')
                     <span style="color: red; text-transform: uppercase">{{$message}}</span>
                 @enderror

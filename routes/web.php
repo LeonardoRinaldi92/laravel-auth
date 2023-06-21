@@ -28,18 +28,19 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::group(['prefix'=>'admin/projects','as'=>'admin.projects.','middleware'=>'auth'], function(){
-    Route::get('/create', [ProjectController::class, 'create'])->name('create');
-    Route::get('/indexForEdit', [ProjectController::class, 'indexForEdit'])->name('indexForEdit');
-    Route::post('/store',[ProjectController::class, 'store'])->name(('store'));
-    Route::get('/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
-    Route::put('/{project}/update', [ProjectController::class, 'update'])->name('update');
-    Route::delete('/{project}/destroy',[ProjectController::class, 'destroy'])->name('destroy');
+Route::group(['prefix'=>'admin','as'=>'admin.projects.','middleware'=>'auth'], function(){
+    Route::get('/projects/create', [ProjectController::class, 'create'])->name('create');
+    Route::get('/', [ProjectController::class, 'indexForEdit'])->name('indexForEdit');
+    Route::post('/projects/store',[ProjectController::class, 'store'])->name(('store'));
+    Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
+    Route::put('/projects/{project}/update', [ProjectController::class, 'update'])->name('update');
+    Route::delete('/projects/{project}/destroy',[ProjectController::class, 'destroy'])->name('destroy');
 });
 
 Route::group(['prefix'=>'projects','as'=>'projects.'], function(){
     Route::get('/', [ProjectController::class, 'index'])->name('index');
     Route::get('/{project}', [ProjectController::class, 'show'])->name('show');
+    // ->parameters(['project' => 'project:slug' ]);
 });
 
 require __DIR__.'/auth.php';

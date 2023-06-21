@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
+use Illuminate\Support\Str;
+
 use App\Models\Admin\Project;
 use Illuminate\Http\Request;
 
@@ -46,8 +48,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+
+            
+        
+        $slug = Str::slug($request->name);
+        
         $form_data = $request->validated();
 
+        $form_data['slug'] = $slug;
+ 
         $new_project = new Project($form_data);
         $new_project->save();
         

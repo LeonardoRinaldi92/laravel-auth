@@ -8,7 +8,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="project-name" class="form-label">Titolo</label>
+                <label for="project-name" class="form-label text-white-50">Titolo</label>
                 <input type="text" required max="255"  id="project-name" class="form-control"
                 placeholder="Inserisci il titolo del progetto" name="name" value="{{ old('name')}}">
                 @error('name')
@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-group">
-                <label for="project-description" class="form-label">Descrizione</label>
+                <label for="project-description" class="form-label text-white-50">Descrizione</label>
                 <textarea id="project-description" class="form-control"
                 placeholder="Inserisci la descrizione del progetto" name="description">{{ old('description')}}</textarea>
                 @error('description')
@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="project-short_description" class="form-label">Descrizione breve</label>
+                <label for="project-short_description" class="form-label text-white-50">Descrizione breve</label>
                 <input type="text" required max="255"  id="project-short_description" class="form-control"
                 placeholder="Inserisci BREVE descrizione del progetto" name="short_description" value="{{ old('short_description')}}">
                 @error('short_description')
@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group">
-                <label for="project-image" class="form-label">Immagine del progetto</label>
+                <label for="project-image" class="form-label text-white-50">Immagine del progetto</label>
                 <input type="text" required max="255"  id="project-image" class="form-control"
                 placeholder="Inserisci l'immagine" name="image" value="{{ old('image')}}">
                 @error('image')
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group">
-                <label for="project-relase_date" class="form-label">data publicazione</label>
+                <label for="project-relase_date" class="form-label text-white-50">data publicazione</label>
                 <input type="date" required id="project-relase_date" class="form-control" name="relase_date"
                     min="1900-01-01" value="{{ old('relase_date')}}">
                 @error('relase_date')
@@ -53,12 +53,19 @@
             </div>
 
             <div class="form-group">
-                <label for="project-type" class="form-label">type</label>
+                <label for="project-type" class="form-label text-white-50">type</label>
                 <input type="text" required max="255" id="project-type" class="form-control"
                 placeholder="Inserisci i programmi usati" name="type" value="{{ old('type')}}">
                 @error('type')
                     <span style="color: red; text-transform: uppercase">{{$message}}</span>
                 @enderror
+            </div>
+            <div class="form-group">
+                <label for="project-visibility" class="form-label text-white-50">visibilità</label>
+                <div>
+                    <input type="radio" name="visibility" value="0"><span class="text-white-50">privato</span>
+                    <input type="radio" name="visibility" value="1"> <span class="text-white-50">publico</span>
+                </div>
             </div>
             <button type="submit" class="my-3 btn btn-primary">Aggiungi progetto </button>
         </form>

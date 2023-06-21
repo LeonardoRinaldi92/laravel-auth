@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use League\Flysystem\Visibility;
 
 class StoreProjectRequest extends FormRequest
 {
@@ -30,6 +31,8 @@ class StoreProjectRequest extends FormRequest
             'image' => ['required', 'string', 'max:255'],
             'relase_date' => ['required', 'date'],
             'type' => ['required', 'string', 'max:255'],
+            'slug'=> ['string'],
+            'visibility'=>['boolean'],
         ];
     }
 
@@ -42,6 +45,8 @@ class StoreProjectRequest extends FormRequest
         'image' => 'la foto del progetto',
         'relase_date' => 'la data di creazione del progetto',
         'type' => 'i programmi usati per il progetto',
+        'visbility' => 'la visibiltà del progetto'
+
        ];
    }
 }

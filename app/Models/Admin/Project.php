@@ -20,4 +20,15 @@ class Project extends Model
         'visibility',
         'slug'
     ];
+
+        /**
+     * Scope a query to only include active users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeVisible($query)
+    {
+        $query->where('visibility', 1);
+    }
 }

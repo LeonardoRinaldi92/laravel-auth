@@ -21,7 +21,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::visible()->get();
         return view('pages.projects.index', compact('projects'));
     }
 
@@ -72,10 +72,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Admin\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Project $project)
 
     {
-        $project = project::where('slug', $slug)->firstOrFail();
         return view('pages.projects.show', compact('project'));
     }
 
@@ -85,9 +84,8 @@ class ProjectController extends Controller
      * @param  \App\Models\Admin\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit(Project $project)
     {
-        $project = project::where('slug', $slug)->firstOrFail();
         return view('pages.admin.projects.edit',compact('project'));
     }
 
@@ -100,22 +98,27 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $form_data = $request->validated();
+
         if( $request->hasFile('image') ){        
             if( $project->image ){
                 Storage::delete($project->image);
             }
             $path = Storage::disk('public')->put( 'projects_images', $request->image );
+            $form_data['image'] = $path;
         }
-        $slug = Str::slug($request->name);
 
-        $form_data = $request->validated();
-
-        $form_data['slug'] = $slug;
-        $form_data['image'] = $path;
+        $form_data['slug'] = Str::slug($request->name);
 
         $project->update($form_data);
         
-        return redirect()->route('projects.show', $project->slug)->with('success', "hai modificato l'elemento".$project['name']);
+        return redirect()->route('projects.show', $project)->with('success', "hai modificato l'elemento".$project['name']);
+    }
+
+    public function visibility(Project $project) {
+        $project->update(['visibility' => !$project->visibility]);
+
+        return redirect()->route('admin.projects.indexForEdit')->with('success', "hai modificato la vidibilità dell'elemento".$project['name']);
     }
 
     /**

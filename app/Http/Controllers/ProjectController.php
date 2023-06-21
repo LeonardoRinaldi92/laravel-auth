@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 use App\Models\Admin\Project;
@@ -48,11 +49,16 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        if( $request->hasFile('image') ){
+            $path = Storage::disk('public')->put( 'projects_images', $request->image );
+        };
+
         $slug = Str::slug($request->name);
         
         $form_data = $request->validated();
 
         $form_data['slug'] = $slug;
+        $form_data['image'] = $path;
  
         $new_project = new Project($form_data);
         $new_project->save();
@@ -113,7 +119,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $project->delete();
+        if( $project->image ){
+            Storage::delete($project->image);
+            $project->delete();
+        }  
         return redirect()->route('admin.projects.indexForEdit');
     }
 }

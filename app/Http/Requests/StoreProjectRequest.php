@@ -28,7 +28,7 @@ class StoreProjectRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
             'short_description' => ['required', 'string', 'max:255'],
-            'image' => ['required', 'string', 'max:255'],
+            'image' => ['required', 'image'],
             'relase_date' => ['required', 'date'],
             'type' => ['required', 'string', 'max:255'],
             'slug'=> ['string'],

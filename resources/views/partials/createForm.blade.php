@@ -3,7 +3,7 @@
         <h1 class="text-center text-white">
             Crea un nuovo progetto
         </h1>
-        <form action="{{route('admin.projects.store')}}" method="POST">
+        <form action="{{route('admin.projects.store')}}" method="POST" enctype="multipart/form-data">
             @method('POST')
             @csrf
 
@@ -12,6 +12,14 @@
                 <input type="text" required max="255"  id="project-name" class="form-control"
                 placeholder="Inserisci il titolo del progetto" name="name" value="{{ old('name')}}">
                 @error('name')
+                    <span style="color: red; text-transform: uppercase">{{$message}}</span>
+                @enderror
+            </div>
+
+            <div class="mb-3 form-group">
+                <label for="project-image" class="form-label">Scegli una immagine</label>
+                <input type="file" class="form-control" name="image" id="project-image" placeholder="project-image" aria-describedby="fileHelpId">
+                @error('image')
                     <span style="color: red; text-transform: uppercase">{{$message}}</span>
                 @enderror
             </div>
@@ -34,14 +42,6 @@
                 @enderror
             </div>
 
-            <div class="form-group">
-                <label for="project-image" class="form-label text-white-50">Immagine del progetto</label>
-                <input type="text" required max="255"  id="project-image" class="form-control"
-                placeholder="Inserisci l'immagine" name="image" value="{{ old('image')}}">
-                @error('image')
-                    <span style="color: red; text-transform: uppercase">{{$message}}</span>
-                @enderror
-            </div>
 
             <div class="form-group">
                 <label for="project-relase_date" class="form-label text-white-50">data publicazione</label>

@@ -11,7 +11,7 @@ Portfolio Leonardo Rinaldi | Progetti
                 <a href="{{route('projects.show', $project->slug)}}" class="text-decoration-none text-dark">
                     <h3>{{$project['name']}}
                     </h3>
-                    <img src="{{$project['image']}}" style="width: 100%" alt="">
+                    <img class="w-100" src="{{asset('storage/'. $project['image'])}}" alt="" >
                     <h6><i>{{$project['short_description']}}</i>
                     </h6>
                 </a>
